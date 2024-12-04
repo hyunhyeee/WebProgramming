@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>포지션, 스타일, 애니메이션</title>
+  <style>
+    .prac1-1 div {
+      border: 2px solid yellowgreen;
+      width: 200px;
+      display: inline-block;
+    }
+
+    .prac1-2 div {
+      border: 2px solid yellowgreen;
+      width: 200px;
+      display: inline;
+    }
+
+    .prac2-footer {
+      color: darkviolet;
+      background-color: violet;
+      position: fixed;
+      width: 100%;
+    }
+
+    .prac3-table {
+      border: 1px solid yellowgreen;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+
+    .prac3 th {
+      width: 200px;
+      text-align: left;
+      border-bottom: 1px solid gray;
+    }
+
+    .prac3 button:hover {
+      color: magenta;
+    }
+
+    .prac4 ul {
+      list-style-type: square;
+      padding-right: 10px;
+      background-image: url("prac5-Image/worldmap.png");
+      color: navy;
+    }
+
+    .prac4 li:hover {
+      background-color: yellowgreen;
+    }
+
+    .prac5-float {
+      float: left;
+      border: 1px solid yellowgreen;
+      left: 10px;
+      padding: 5px;
+      margin: 10px;
+    }
+
+    .prac6-1 img {
+      width: 120px;
+      height: 150px;
+      animation-name: roate_360;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes roate_360 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .prac6-2 img {
+      width: 120px;
+      height: 150px;
+      animation-name: roate_90;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes roate_90 {
+      50% {
+        transform: rotate(-90deg);
+      }
+
+      100% {
+        transform: rotate(90deg);
+      }
+    }
+
+    .prac7 img {
+      width: 120px;
+      height: 150px;
+      transition: width 2s;
+    }
+
+    .prac7 img:hover {
+      width: 100%;
+    }
+
+    .prac8-row ul {
+      background: goldenrod;
+      padding: 10px 10px 10px 50px;
+      list-style-position: inside;
+      list-style-type: square;
+    }
+
+    .prac8-row ul li {
+      background: greenyellow;
+      margin-bottom: 5px;
+    }
+
+    .prac8-colum {
+      background: olive;
+      width: 150px;
+    }
+
+    .prac8-colum ul {
+      margin: 0;
+      padding: 0;
+      height: 130px;
+    }
+
+    .prac8-colum ul li {
+      display: block;
+      list-style-type: none;
+      padding: 0px 15px;
+    }
+
+    .prac8-colum ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .prac8-colum ul li a:hover {
+      color: violet;
+    }
+
+    .prac9 {
+      width: 300px;
+      border: 2px solid peru;
+    }
+
+    .prac9 ol {
+      list-style-type: none;
+      padding: 0 20px 0 20px;
+    }
+
+    .prac9 ol li {
+      font: bold italic 35px Helvetica;
+      padding-left: 5px;
+      margin-bottom: 10px;
+    }
+
+    .prac9 ol li span {
+      position: absolute;
+      color: olivedrab;
+    }
+
+    .prac9 ol li p {
+      font: 14px Helvetica, Sans-Serif;
+      padding-left: 50px;
+    }
+
+    .prac9 h3 {
+      text-align: center;
+    }
+
+    @keyframes move_left {
+      0% {
+        margin-left: 100%;
+      }
+
+      100% {
+        margin-right: 0%;
+      }
+    }
+
+    .prac10 img {
+      width: 30px;
+      height: 30px;
+      animation-name: move_left;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>div display - inline, block, inline-block</h3>
+  <hr>
+  <div class="prac1-1">
+    <div>캔버스에 이미지를 그리기 위해서는 이미지를 담을 객체가 먼저 필요하다.</div>
+    <div>Image 객체의 src 프로퍼티를 이용하여 비트맵을 로드한다.</div>
+    <div>이미지 로딩이 끝나면 그때 비로소 이미지의 너비와 높이가 제대로 알려진다.</div>
+  </div>
+  <br>
+  <div class="prac1-2">
+    <div>캔버스에 이미지를 그리기 위해서는 이미지를 담을 객체가 먼저 필요하다.</div>
+    <div>Image 객체의 src 프로퍼티를 이용하여 비트맵을 로드한다.</div>
+    <div>이미지 로딩이 끝나면 그때 비로소 이미지의 너비와 높이가 제대로 알려진다.</div>
+  </div>
+
+  <br><br>
+  <div class="prac2">
+    <h3>position:fixed</h3>
+    <hr>
+    <p>저는 체조 선수 손연재입니다. 음악을 들으면서 책읽기를 좋아합니다. 김치 찌개와 막국수 무척 좋아합니다.</p>
+    <p class="prac2-footer">소연재 공연은 24일입니다.</p>
+  </div>
+
+  <br><br>
+  <div class="prac3">
+    <h3></h3>
+    <hr>
+    <table>
+      <tr>
+        <td class="prac3-table">1</td>
+        <th>애국가</th>
+        <td>
+          <button>재생</button>
+        </td>
+        <td>
+          <button>중지</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="prac3-table">2</td>
+        <th>Moon Glow</th>
+        <td>
+          <button>재생</button>
+        </td>
+        <td>
+          <button>중지</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="prac3-table">3</td>
+        <th>Embraceable You</th>
+        <td>
+          <button>재생</button>
+        <td>
+          <button>중지</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <br><br>
+  <div class="prac4">
+    <h3>리스트 꾸미기</h3>
+    <hr>
+    <ul>
+      <li>프랑스</li>
+      <li>독일</li>
+      <li>칠레</li>
+      <li>남아프리카공화국</li>
+    </ul>
+  </div>
+
+  <br><br>
+  <div class="prac5">
+    <h3>이미지 float 위치고정 </h3>
+    <hr>
+    <img class="prac5-float" src="prac5-Image/spongebob.png" width="100" height="100">
+    <p>
+      저는 스폰지밥입니다. 먹는 밥이 아니고요 제 이름이 그냥 그래요.
+      그리고 어린이부터 노인까지 많은 분들의 사랑을 받고 있어요.
+      제 친구 뚱이도 있고요, 징징이도 있고 집게 사장님도 있어요</p>
+  </div>
+
+  <br><br>
+  <div class="prac6">
+    <h3>이미지 회전</h3>
+    <hr>
+    <div class="prac6-1">
+      <img src="prac5-Image/spongebob.png">
+    </div>
+    <div class="prac6-2">
+      <img src="prac5-Image/spongebob.png">
+    </div>
+  </div>
+
+  <br><br>
+  <div class="prac7">
+    <h3>이미지 늘리기</h3>
+    <hr>
+    <img src="prac5-Image/spongebob.png">
+  </div>
+
+  <br><br>
+  <div class="prac8">
+    <h3>메뉴 가로 세로 정렬</h3>
+    <hr>
+    <div class="prac8-row">
+      <ul>
+        <li>Espresso</li>
+        <li>Cappuccino</li>
+        <li>Cafe Latte</li>
+      </ul>
+    </div>
+    <div class="prac8-colum">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Espresso</a></li>
+        <li><a href="#">Cappuccino</a></li>
+        <li><a href="#">Cafe latte</a></li>
+        <li><a href="#">F.A.Q</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <br><br>
+  <h3>순서 메뉴판 꾸미기</h3>
+  <hr>
+  <div class="prac9">
+    <h3>카푸치노 만드는 순서</h3>
+    <ol>
+      <li><span>1.</span>
+        <p>에스프레소를 추출한다.
+          반드시 에스프레소 콩을 사용해야 제맛이 난다.</p>
+      </li>
+      <li><span>2.</span>
+        <p>적당한 용기에 우유를 넣어 중탕을 하거나
+          끓기 직전까지 데운다.</p>
+      </li>
+      <li><span>3.</span>
+        <p>몇초간 저어 충분히 거품을 낸다.
+          거품이 충분하지 않으면 풍미가 떨어진다.</p>
+      </li>
+      <li><span>4.</span>
+        <p>컵에 계피 막대를 꽂고 커피를 부은후
+          우유 거품을 붓는다. 휘핑크림을 얹고 계피가루를 뿌린다</p>
+      </li>
+    </ol>
+  </div>
+
+  <br><br>
+  <div class="prac10">
+    <h3>애니메이면 슬라이딩</h3>
+    <hr>
+    <p><img src="prac5-Image/spongebob.png">질문 있습니다.</p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .prac4 div {
+      display: inline-block;
+      position: absolute;
+    }
+
+    .prac4 img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .prac10 table {
+      text-align: center;
+      border: hidden;
+    }
+
+    .prac10 td {
+      width: 100px;
+    }
+
+    .prac10 input {
+      width: 90%;
+    }
+  </style>
+</head>
+
+<body ondblclick="randomBackground()" onload="init()">
+  <h3>onblur와 onfocus</h3>
+  <hr>
+  <script>
+    window.onblur = function (e) {
+      document.body.style.backgroundColor = "lightgray";
+    }
+    window.onfocus = function (e) {
+      document.body.style.backgroundColor = "white";
+    }
+  </script>
+  <div class="prac1">
+    <p>
+      브라우저 바깥에 마우스를 클릭하면
+      window 객체에 blur 이벤트가 발생하고
+      다시 마우스를 클릭하면
+      window 객체에 focus 이벤트가 발생한다.
+    </p>
+  </div>
+
+  <br><br>
+  <h3>라디오버튼 누르면 이미지 출력 document.getElementsByName</h3>
+  <hr>
+  <script>
+    function drawImage() {
+      var found = null;
+      var kfruit = document.getElementsByName("fruit");
+      for (var i = 0; i < kfruit.length; ++i) {
+        if (kfruit[i].checked == true) {
+          found = kfruit[i];
+        }
+      }
+      var img = document.getElementById("fruitimage");
+      img.src = "chap9-Image/" + found.value + ".jpg";
+    }
+  </script>
+  <div class="prac2">
+    <form>
+      <input type="radio" name="fruit" value="banana" onchange="drawImage()">바나나
+      <input type="radio" name="fruit" value="mango" onchange="drawImage()">망고
+      <input type="radio" name="fruit" value="apple" onchange="drawImage()" checked>사과
+      <br>
+      <img id="fruitimage" src="chap9-Image/apple.jpg" alt="" width="150" height="150">
+    </form>
+  </div>
+
+  <br><br>
+  <h3>onkeydown</h3>
+  <hr>
+  <script>
+    function calculate(e) {
+      if (e.key == "Enter") {
+        let exp = document.getElementById("exp");
+        let result = document.getElementById("result");
+        result.value = eval(exp.value);
+      }
+    }
+  </script>
+  <div class="prac3">
+    수식을 입력하고 &lt;Enter&gt;를 입력하세요.
+    <p>
+    <form>
+      식 <input type="text" id="exp" value="" onkeydown="calculate(event)"><br>
+      값 <input type="text" id="result">
+    </form>
+  </div>
+
+  <br><br>
+  <h3>onmousemove</h3>
+  <hr>
+  <div class="prac4">
+    <p>
+      마우스를 움직이면 이미지로 만든 커서가 마우스를 따라다닙니다.
+    </p>
+    <!-- <div id="div"><img src="chap9-Image/spongebob.png" alt=""></div> -->
+    <script>
+      document.onmousemove = function (e) {
+        var div = document.getElementById("div");
+        div.style.left = e.x + "px";
+        div.style.top = e.y + "px";
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>배경 랜덤 바뀜 Math.random()</h3>
+  <hr>
+  <script>
+    function randomBackground() {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      document.body.style.backgroundColor =
+        "rgb(" + r + "," + g + "," + b + ")";
+    }
+  </script>
+  <div class="prac5">
+    <p>바탕 아무 곳이나 <strong>더블클릭</strong>하면
+      배경색이 랜덤하게 변합니다.
+    </p>
+  </div>
+
+  <br><br>
+  <h3>마우스휠 굴리기 onwheel</h3>
+  <hr>
+  <div class="prac6">
+    <p>
+      이미지 위에 휠을 위로 굴리면 이미지가 축소되고,
+      아래로 굴리면 이미지가 확대됩니다.
+    </p>
+    <img id="img" src="chap9-Image/spongebob.png" alt="" onwheel="wheel(event)" width="100px" height="100px">
+    <script>
+      var size = 100;
+
+      function wheel(e) {
+        if (e.wheelDelta < 0) {
+          size = size - (size * 0.05);
+          if (size < 0) {
+            size = 0;
+          }
+        } else {
+          size = size + (size * 0.05);
+        }
+        document.getElementById("img").style.width = size + "px";
+        document.getElementById("img").style.height = size + "px";
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>window.onmouseover onmouseout</h3>
+  <hr>
+  <script>
+    window.onmouseover = function (e) {
+      if (e.target.tagName.toLowerCase() != "span") return;
+      e.target.style.textDecoration = "underline";
+    }
+    window.onmouseout = function (e) {
+      if (e.target.tagName.toLowerCase() != "span") return;
+      e.target.style.textDecoration = "none";
+    }
+  </script>
+  <div class="prac7">
+    <p>span 태그에 대해서만 <span>마우스</span>가 올라올 때
+      밑줄이 그어지고 <span>마우스</span>가 내려갈 때 밑줄이 사라지도록
+      <span>자바스크립트 코드</span>를 작성한다.
+    </p>
+  </div>
+
+  <br><br>
+  <h3>getElementsByTagName("li")</h3>
+  <hr>
+  <script>
+    let text = [
+      "빨간자전거를 타고 서울, 대전, 대구, 부산 찍고, 목포, 인천을 거쳐 달린다",
+      "한국 고전 50권, 외국 고전 50권을 읽는 목표",
+      "아침에는 수영을 배우고, 점심먹고 자전거 훈련 30KM, 저녁에는 10KM 달리기 하기",
+      "문제가 많고 잘 정리된 자바스크립트 책을 구입하여 본격적으로 연습문제 풀기"
+    ];
+
+    let commentDiv;
+
+    function init() {
+      commentDiv = document.getElementById("commentDiv");
+
+      let liArray = document.getElementsByTagName("li");
+
+      for (let i = 0; i < liArray.length; ++i) {
+        liArray[i].onclick = click;
+        liArray[i].addEventListener("mouseover", over, false);
+        liArray[i].addEventListener("mouseout", hideCommentDiv, false);
+      }
+
+      function click(e) {
+        reset();
+        e.target.style.fontSize = "1.3em"; // 클릭 시 글씨 크기 증가
+      }
+
+      function reset() {
+        for (let i = 0; i < liArray.length; ++i) {
+          liArray[i].style.fontSize = "1em"; // 클릭 시 다른 항목 초기화
+        }
+      }
+
+      function over(e) {
+        let n = 0;
+        switch (e.target.id) {
+          case "l0":
+            n = 0;
+            break;
+          case "l1":
+            n = 1;
+            break;
+          case "l2":
+            n = 2;
+            break;
+          case "l3":
+            n = 3;
+            break;
+        }
+        setCommentDiv(text[n], e);
+      }
+
+      function setCommentDiv(comment, e) {
+        commentDiv.innerHTML = comment;
+        commentDiv.style.left = e.clientX + "px";
+        commentDiv.style.top = e.clientY + "px";
+        commentDiv.style.border = "1px solid yellowgreen";
+        commentDiv.style.background = "aliceblue";
+        commentDiv.style.visibility = "visible";
+        commentDiv.style.width = "200px";
+        commentDiv.style.height = "80px";
+      }
+
+      function hideCommentDiv() {
+        commentDiv.style.visibility = "hidden";
+      }
+    }
+  </script>
+  <div class="prac8">
+    <p>여름 방학 때 하고 싶은 것들</p>
+    <ul>
+      <li id="l0">자전거로 대한민국 일주</li>
+      <li id="l1">책 100권 읽기</li>
+      <li id="l2">철인 3종 경기 준비</li>
+      <li id="l3">자바스크립트 정복</li>
+    </ul>
+    <div id="commentDiv" style="position:absolute"></div>
+  </div>
+
+  <br><br>
+  <h3>계산기</h3>
+  <hr>
+  <script>
+    var expression = "";
+
+    function number(text) {
+      expression += text;
+      document.getElementById("win").value = expression;
+    }
+
+    function compute() {
+      document.getElementById("win").value = eval(expression);
+    }
+
+    function evalclear() {
+      document.getElementById("win").value = "";
+      expression = "";
+    }
+
+    function Backspace() {
+      length = document.getElementById("win").value.length;
+      document.getElementById("win").value = document.getElementById("win").value.substring(0, length - 1);
+      expression = document.getElementById("win").value.toString();
+      document.getElementById("win").value = expression;
+    }
+  </script>
+  <div class="prac10">
+    <input type="text" id="win" value="0" style="width:50%">
+    <table border=0 style="width:50%; height:50%;">
+      <tr colspan=4>
+        <td><input type="button" value="Back" onclick="Backspace()"></td>
+        <td><input type="button" value="CE" onclick="evalclear()"></td>
+        <td><input type="button" value="C" onclick="evalclear()"></td>
+        <td><input type="button" value="=" onclick="compute()"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="7" onclick="number('7')"></td>
+        <td><input type="button" value="8" onclick="number('8')"></td>
+        <td><input type="button" value="9" onclick="number('9')"></td>
+        <td><input type="button" value="/" onclick="number('/')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="4" onclick="number('4')"></td>
+        <td><input type="button" value="5" onclick="number('5')"></td>
+        <td><input type="button" value="6" onclick="number('6')"></td>
+        <td><input type="button" value="*" onclick="number('*')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="1" onclick="number('1')"></td>
+        <td><input type="button" value="2" onclick="number('2')"></td>
+        <td><input type="button" value="3" onclick="number('3')"></td>
+        <td><input type="button" value="-" onclick="number('-')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="0" onclick="number('0')"></td>
+        <td><input type="button" value="+" onclick="number('+')"></td>
+        <td><input type="button" value="NONE"></td>
+        <td><input type="button" value="NONE"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

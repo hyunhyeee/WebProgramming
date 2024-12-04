@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로토타입 사용자 함수 생성</title>
+
+  <style>
+    .prac7 {
+      display: inline-block;
+      width: 60px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Math.random()</h3>
+  <hr>
+  <div class="prac1">
+    <script>
+      let n = [];
+      for (let i = 0; i < 10; i++) {
+        let x = Math.random() * 100 + 1;
+        n[i] = Math.floor(x);
+      }
+
+      for (let i = 0; i < 10; i++)
+        document.write(n[i] + " ");
+
+      document.write("<hr>");
+      let big = n[0];
+      for (let i = 1; i < 10; i++) {
+        if (n[i] > big)
+          big = n[i];
+      }
+      document.write("제일 큰 수는 " + big);
+      document.write("<hr>");
+      n.sort();
+      for (let i = 0; i < 10; i++)
+        document.write(n[i] + " ");
+    </script>
+  </div>
+
+  <br><br>
+  <h3>정수 역순</h3>
+  <hr>
+  <div class="prac2">
+    <script type="text/javascript">
+      var num = [];
+      for (var i = 0; i < 5; ++i) {
+        num[i] = prompt("정수 입력");
+      }
+      document.write("입력된 수의 배열<br>");
+      for (var i = 0; i < 5; ++i) {
+        document.write(num[i] + " ");
+      }
+      document.write("<hr>");
+      document.write("역순으로 재정렬된 배열<br>");
+      num.reverse();
+      for (var i = 0; i < 5; ++i) {
+        document.write(num[i] + " ");
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>getHours(), document.body.style.backgroundColor</h3>
+  <hr>
+  <div class="prac3">
+    <script>
+      let current = new Date();
+      if (current.getHours() < 12)
+        document.body.style.backgroundColor = "lightskyblue";
+      else
+        document.body.style.backgroundColor = "orange";
+
+      document.write("현재 시간 : ");
+      document.write(current.getHours() + "시,");
+      document.write(current.getMinutes() + "분,");
+      document.write(current.getSeconds() + "초<br>");
+    </script>
+  </div>
+
+  <br><br>
+  <h3>split 문자 분리</h3>
+  <hr>
+  <div class="prac6">
+    <script>
+      var s = prompt("문자열 입력");
+      var sArray = s.split("&");
+      for (var i = 0; i < sArray.length; i++) {
+        document.write(sArray[i] + "<br>")
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>색깔출력</h3>
+  <hr>
+  <div class="prac7">
+    <script>
+      let colorNames = ["maroon", "red", "orange", "yellow", "olive",
+        "purple", "fuchsia", "white", "lime", "green",
+        "navy", "blue", "aqua", "teal", "black", "silver", "gray"];
+
+      for (let i = 0; i < colorNames.length; i++) {
+        let str = "<div style='background-color:";
+        str += colorNames[i];
+        str += "'>" + colorNames[i] + "</div>";
+        document.write(str);
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>객체 표기법 3가지</h3>
+  <hr>
+  <h4>new Object() 표기법</h4>
+  <div class="prac9">
+    <script>
+      let book1 = new Object();
+      book1.title = "HTML5";
+      book1.author = "황기태";
+      book1.price = 20000;
+
+      document.write("book1 : ");
+      document.write(book1.title + ", ");
+      document.write(book1.author + ", ");
+      document.write(book1.price + "<br>");
+    </script>
+    <hr>
+    <h4>리터럴 표기법</h4>
+    <script>
+      let book2 = {
+        title: "HTML5",
+        author: "황기태",
+        price: 20000
+      };
+
+      document.write("book2 : ");
+      document.write(book2.title + ", ");
+      document.write(book2.author + ", ");
+      document.write(book2.price + "<br>");
+    </script>
+    <hr>
+    <h4>프로토타입 작성</h4>
+    <script>
+      function Book3() {
+        this.title = "HTML5";
+        this.author = "황기태";
+        this.price = 20000;
+      }
+
+      let book3 = new Book3();
+
+      document.write("book3 : ");
+      document.write(book3.title + ", ");
+      document.write(book3.author + ", ");
+      document.write(book3.price + "<br>");
+    </script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>별찍기</h3>
+  <hr>
+  <div class="open-challenge">
+    <script>
+      function printstar(num) {
+        n = parseInt(num);
+        if (isNaN(n)) {
+          document.write("입력 오류 입니다.");
+        }
+        for (i = 0; i < n; i++) {
+          for (j = 0; j <= i; j++) {
+            document.write("*");
+          }
+          document.write("<br>")
+        }
+      }
+    </script>
+    <script>
+      // var num = prompt("정수를 입력하세요", "1");
+      // printstar(num);
+    </script>
+  </div>
+
+  <br><br>
+  <h3>onmouseover, onmouseout</h3>
+  <hr>
+  <script>
+    function over(obj) {
+      obj.style.background = "yellow";
+    }
+
+    function out(obj) {
+      obj.style.background = "white";
+    }
+  </script>
+  <div class="prac1" onmouseover="over(this)" onmouseout="out(this)">
+    여기에 마우스를 올리면 배경색이 노란색으로 변합니다.
+  </div>
+
+  <br><br>
+  <h3>document.write()</h3>
+  <hr>
+  <div class="prac2">
+    <script>
+      document.write("Welcome Home")
+      document.write("저희 홈 페이지 오신 것을 환영합니다.")
+    </script>
+  </div>
+
+  <br><br>
+  <h3>document.write 표만들기</h3>
+  <hr>
+  <div class="prac3">
+    <script>
+      document.write("<table border='1'");
+      document.write("<tr>");
+      document.write("<th>");
+      document.write("n");
+      document.write("</th>");
+
+      for (let j = 0; j < 10; j++) {
+        document.write("<td>");
+        document.write(j);
+        document.write("</td>");
+      }
+      document.write("</tr><tr>");
+      document.write("<th>");
+      document.write("n<sup>2</sup>");
+      document.write("</th>");
+
+      for (let j = 0; j < 10; j++) {
+        document.write("<td>");
+        document.write(j * j);
+        document.write("</td>");
+      }
+      document.write("</tr>");
+      document.write("</table>");
+    </script>
+  </div>
+
+  <br><br>
+  <h3>프롬포트 switch-case 사용</h3>
+  <hr>
+  <div class="prac4">
+    <script>
+      // var day = prompt("월화수목금토일 중에서 입력하세요", "");
+      switch (day) {
+        case "월":
+        case "화":
+        case "수":
+        case "목":
+          document.write(day + "는 출근");
+          break;
+        case "금":
+        case "토":
+        case "일":
+          document.write(day + "는 휴일");
+          break;
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>프롬포트 if문 사용</h3>
+  <hr>
+  <div class="prac5">
+    <script>
+      // var code = prompt("암호를 대라", "");
+      if (code == "you") {
+        document.write("통과!");
+      } else {
+        document.write("실패ㅜㅜ");
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>함수 작성</h3>
+  <hr>
+  <div class="prac6">
+    <script>
+      function big(a, b) {
+        if (a < b) {
+          return b;
+        } else
+          return a;
+      }
+    </script>
+    <script>
+      let b = big("625", "555");
+      document.write("큰수=" + b);
+    </script>
+    <hr>
+    <script>
+      function pr(a, b) {
+        for (var i = 1; i <= b; i++)
+          document.write(a)
+      }
+    </script>
+    <script>
+      pr("%", 5)
+    </script>
+  </div>
+
+  <br><br>
+  <h3>사용자로 함수 입력 받아 계산</h3>
+  <hr>
+  <div class="prac7">
+    <script>
+      // let str = prompt("숫자 입력", "0");
+      if (isFinite(str)) {
+        let n = parseInt(str);
+        if (n > 0) { // 양수인 경우에만
+          let least = n % 10; // 1의 자리수
+          let most = 0;
+          while (n != 0) {
+            most = n % 10;
+            n = Math.floor(n / 10);
+          }
+          if (most == least)
+            document.write(str + ": 같음");
+          else
+            document.write(str + ": 다름");
+        } else
+          document.write(str + ": 음수나 0은 다루지 않습니다.");
+      } else {
+        document.write(str + ": 숫자가 아닙니다.");
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>프롬포트로 수식 계산</h3>
+  <hr>
+  <div class="prac8">
+    <script>
+      var num = prompt("수식 입력", "")
+      var a = eval(num);
+      document.write(num + "=" + a);
+    </script>
+  </div>
+</body>
+
+</html>

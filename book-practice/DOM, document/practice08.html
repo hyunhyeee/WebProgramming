@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .prac3 span {
+      visibility: hidden;
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>getElementsByTagName()</h3>
+  <hr>
+  <div class="prac1">
+    <ol type="A" onclick="this.style.backgroundColor='yellowgreen'">
+      <li>물을 끓인다.</li>
+      <li>라면과 스프를 넣는다.</li>
+      <li>파를 썰어 넣는다.</li>
+      <li>5분 후 <strong>맛있게</strong> 먹는다.</li>
+    </ol>
+    <script>
+      let liArray = document.getElementsByTagName("li");
+      for (let i = 0; i < liArray.length; i++) {
+        let obj = liArray[i];
+        obj.style.color = 'green';
+      }
+    </script>
+  </div>
+
+  <br><br>
+  <h3>document.getElementById, button onclick</h3>
+  <hr>
+  <script>
+    function a() {
+      var i = document.getElementById("mySpan");
+      i.style.border = "2px dotted violet"
+    }
+
+    function b() {
+      var i = document.getElementsByTagName("p");
+      alert("<p> 태그의 개수는 " + i.length);
+
+    }
+  </script>
+  <div class="prac2">
+    <h5>자바스크립트란?
+      <button onclick="a()">border</button>
+      <button onclick="b()">p</button>
+    </h5>
+    <p>자바스크립트는 웹 프로그래밍 언어로서 웹 페이지를 동적 변경시킬 수 있다.</p>
+    <p><span id="mySpan">C언어</span>를 아는 사용자는 빠르게 학습할 수 있다.</p>
+    <p>이벤트 등 GUI프로그래밍에 필요한 요소들이 있어 학습에 약간의 어려움이 있다.</p>
+  </div>
+
+  <br><br>
+  <h3>document.getElementsByTagName</h3>
+  <hr>
+  <div class="prac3">
+    <script>
+      function show() {
+        let objArray = document.getElementsByTagName("span");
+        for (let i = 0; i < objArray.length; i++) {
+          let obj = objArray[i];
+          let style = window.getComputedStyle(obj);
+          let v = style.getPropertyValue("visibility");
+          if (v == "hidden")
+            obj.style.visibility = "visible";
+          else
+            obj.style.visibility = "hidden";
+        }
+      }
+    </script>
+    <h5>다음 빈 곳에 숨은 단어?
+      <button onclick="show()">show/hide</button>
+    </h5>
+    <ul>
+      <li>I (<span>love</span>) you.
+      <li>CSS is Cascading
+        (<span>Style</span>) Sheet.
+      <li>응답하라 (<span>1988</span>).
+    </ul>
+  </div>
+
+  <br><br>
+  <h3>this.innerHTML</h3>
+  <hr>
+  <div class="prac4">
+    <p>2 + 4 = <span onclick="this.innerHTML= eval(2+4)">답</span></p>
+    <p>4 * 20 + 64 = <span onclick="this.innerHTML = eval(4*20+40)">답</span></p>
+    <p>20/5-8*2 = <span onclick="this.innerHTML = eval(20/5-8*2)">답</span></p>
+  </div>
+
+  <br><br>
+  <h3>document.getElementById, innerHTML</h3>
+  <hr>
+  <script>
+    function a() {
+      let b = prompt("HTML 텍스트 혹은 그냥 텍스트를 입력하세요.");
+      let c = document.getElementById("tra")
+      c.innerHTML = b
+    }
+  </script>
+  <div class="prac6">
+    <p id="tra" onclick="a()">이번 여름에는 어디로 여행을 갈까요?</p>
+  </div>
+
+  <br><br>
+  <h3>function rotate(obj) 사진 회전</h3>
+  <hr>
+  <script>
+    function rotate1(obj1) {
+      obj1.style.transform = "rotate(90deg)";
+    }
+
+    let prac7 = 90;
+
+    function rotate2(obj2) {
+      obj2.style.transform = "rotate(" + prac7 + "deg)";
+      prac7 += 90;
+      prac7 %= 360;
+    }
+  </script>
+
+  <div class="prac7">
+    <img src="prac8-Image/spongebob.png" width="100" height="100" alt="animation" onclick="rotate1(this)">
+    <img src="prac8-Image/spongebob.png" width="100" height="100" alt="animation" onclick="rotate2(this)">
+  </div>
+
+  <br><br>
+  <h3>transform:rotate() 사진 2배 늘리기</h3>
+  <hr>
+  <script>
+    let prac8 = 2
+
+    function change(obj) {
+      obj.style.transform = "scale(" + prac8 + ",1)"
+      prac8 = prac8 * 2
+    }
+  </script>
+  <div class="prac8">
+    <img src="prac8-Image/spongebob.png" width="100" height="100" onclick="change(this)">
+  </div>
+
+  <br><br>
+  <hr>
+  <h3>document.createElement 프롬포트로 순서 추가하기</h3>
+  <hr>
+  <script>
+    function addItem(parent) {
+      let text = prompt("라면을 끓이는 순서를 입력하라", "");
+      if (text == null || text == "")
+        return;
+
+      let liObj = document.createElement("li");
+      liObj.innerHTML = text;
+      parent.appendChild(liObj);
+
+    }
+  </script>
+  <div class="prac9">
+    <ol type="A" style="background-color:yellowgreen" onclick="addItem(this)">
+      <li>물을 끓인다.</li>
+    </ol>
+  </div>
+
+  <br><br>
+  <hr>
+  <h3>newDiv = document.createElement</h3>
+  <hr>
+  <script>
+    function addAnswer(obj, text) {
+      let newDiv = document.createElement("div")
+      newDiv.innerHTML = text;
+      obj.parentElement.appendChild(newDiv)
+      newDiv.addEventListener("click",
+        function () {
+          this.parentElement.removeChild(newDiv)
+        }
+      )
+    }
+  </script>
+  <div class="prac10">
+    <div>
+      <p>Q. 거울아 거울아 세상에서 누가 제일 예쁘니?</p>
+      <button onclick="addAnswer(this, '백설공주')">답보기</button>
+    </div>
+    <div>
+      <p>Q. 죽느냐 사느냐 어떤 것이 문제인가?</p>
+      <button onclick="addAnswer(this, '둘다')">답보기</button>
+    </div>
+  </div>
+</body>
+
+</html>

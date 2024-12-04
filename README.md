@@ -21,3 +21,27 @@
 
 <7주차>
 - **prac10-5.html**: SetTimeout, SetInterval 이용 시계 보이기
+- **prac10-6.html**: div태그를 활용하여 시계를 클릭하면 시계가 멈추고 다시 클릭하면 시계 작동
+
+<9주차>
+- **w9폴더**: 세션 스토리지 저장시키기
+
+<10주차>
+- 
+
+<11주차>
+-
+
+<12주차>
+- **funcPr-practice1.js**: 자바스크립트 function 연습
+- **funcPr-practice2.js**: 자바스크립트 function 연습
+
+<13주차>
+- 
+
+<14주차>
+- **w14폴더**: express.js 실행
+
+
+<교재 실습 문제>
+- **book-practice 폴더**: 교재 실습 코드를 각 장별로 이름으로 정리하여 모아둠
